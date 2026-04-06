@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cinzel: 'Cinzel', serif;
+  --font-cinzel-decorative: 'Cinzel Decorative', serif;
+  --font-inter: 'Inter', sans-serif;
+  
+  --background: 240 10% 3%;
+  --foreground: 45 30% 92%;
+  --card: 240 10% 5%;
+  --card-foreground: 45 30% 92%;
+  --popover: 240 10% 5%;
+  --popover-foreground: 45 30% 92%;
+  --primary: 38 65% 47%;
+  --primary-foreground: 240 10% 5%;
+  --secondary: 240 8% 14%;
+  --secondary-foreground: 45 30% 92%;
+  --muted: 240 8% 14%;
+  --muted-foreground: 240 5% 55%;
+  --accent: 215 90% 60%;
+  --accent-foreground: 240 10% 5%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 45 30% 92%;
+  --border: 240 6% 20%;
+  --input: 240 6% 15%;
+  --ring: 38 65% 47%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: #050508;
+  color: #f2edd7;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8972a44;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c8972a88;
+}
+
+/* Selection */
+::selection {
+  background: rgba(200, 151, 42, 0.3);
+  color: #f2edd7;
+}
+
+/* Typography utilities */
+.font-cinzel { font-family: var(--font-cinzel), serif; }
+.font-cinzel-decorative { font-family: var(--font-cinzel-decorative), serif; }
+
+/* Gold shimmer text */
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #c8972a, #e8b84b, #f5d07a, #e8b84b, #c8972a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Runic border */
+.runic-border {
+  border: 1px solid rgba(200, 151, 42, 0.2);
+  box-shadow: 
+    inset 0 0 20px rgba(200, 151, 42, 0.03),
+    0 0 40px rgba(200, 151, 42, 0.05);
+}
+
+/* Azure glow effects */
+.azure-text-glow {
+  text-shadow: 0 0 20px rgba(74, 158, 255, 0.6), 0 0 40px rgba(74, 158, 255, 0.3);
+}
+
+.gold-text-glow {
+  text-shadow: 0 0 20px rgba(200, 151, 42, 0.6), 0 0 40px rgba(200, 151, 42, 0.3);
+}
+
+/* Noise overlay */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* Gradient masks */
+.mask-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.mask-top {
+  -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+  mask-image: linear-gradient(to top, black 60%, transparent 100%);
+}
+
+/* Premium blur overlay */
+.premium-blur {
+  backdrop-filter: blur(8px) saturate(80%);
+  -webkit-backdrop-filter: blur(8px) saturate(80%);
+}
+
+/* Cinematic vignette */
+.vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.8) 100%);
+  pointer-events: none;
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Particle canvas */
+canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Immersive card hover */
+.immersive-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.immersive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.8),
+    0 0 30px rgba(200, 151, 42, 0.15),
+    inset 0 1px 0 rgba(200, 151, 42, 0.1);
+}
+
+/* Rune circle */
+.rune-circle {
+  border: 1px solid rgba(200, 151, 42, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  animation: rune-spin 20s linear infinite;
+}
+
+/* Section divider */
+.rune-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 151, 42, 0.4) 30%, rgba(200, 151, 42, 0.6) 50%, rgba(200, 151, 42, 0.4) 70%, transparent);
+  position: relative;
+}
+
+.rune-divider::before {
+  content: '❖';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #c8972a;
+  font-size: 12px;
+  background: #050508;
+  padding: 0 12px;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Premium overlay */
+.premium-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 5, 8, 0.3) 30%,
+    rgba(5, 5, 8, 0.85) 70%,
+    rgba(5, 5, 8, 0.98) 100%
+  );
+}
+
+/* Step progress */
+.step-active {
+  color: #c8972a;
+  border-color: #c8972a;
+  box-shadow: 0 0 15px rgba(200, 151, 42, 0.4);
+}
+
+.step-completed {
+  background: rgba(200, 151, 42, 0.2);
+  border-color: rgba(200, 151, 42, 0.6);
+  color: #e8b84b;
+}
+
+/* Scroll animations */
+@layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+}
