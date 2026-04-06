@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import KindredLogo from "@/components/ui/KindredLogo";
 
 export default function Footer() {
   return (
@@ -13,18 +14,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-7 h-7">
-                <div className="absolute inset-0 border border-gold/40 rotate-45 rounded-sm" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-gold text-xs font-cinzel font-bold">L</span>
-                </div>
-              </div>
+              <KindredLogo variant="nav" />
               <span className="font-cinzel text-sm font-semibold text-ivory/80 tracking-widest uppercase">
                 Lore of Legends
               </span>
             </div>
             <p className="font-serif text-xs text-ivory/30 italic leading-relaxed">
-              Une expérience narrative plongeant dans les archives interdites de Runeterra. Guidé par Kindred, forgé par ton imagination.
+              A narrative experience diving into the forbidden archives of Runeterra. Guided by Kindred, forged by your imagination.
             </p>
           </div>
 
@@ -32,8 +28,8 @@ export default function Footer() {
             <h4 className="font-cinzel text-[10px] tracking-[0.4em] uppercase text-gold/40">Navigation</h4>
             <ul className="space-y-2">
               {[
-                { label: "L'Oracle", href: "#oracle" },
-                { label: "La Forge", href: "#forge" },
+                { label: "The Oracle", href: "#oracle" },
+                { label: "The Forge", href: "#forge" },
                 { label: "Premium", href: "#premium" },
               ].map((link) => (
                 <li key={link.href}>
@@ -46,9 +42,9 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-cinzel text-[10px] tracking-[0.4em] uppercase text-gold/40">Légal</h4>
+            <h4 className="font-cinzel text-[10px] tracking-[0.4em] uppercase text-gold/40">Legal</h4>
             <p className="font-serif text-xs text-ivory/20 italic leading-relaxed">
-              Lore of Legends est un projet fan-made non affilié à Riot Games. League of Legends, Runeterra et tous les personnages associés sont la propriété de Riot Games, Inc.
+              Lore of Legends is a fan-made project not affiliated with Riot Games. League of Legends, Runeterra and all associated characters are the property of Riot Games, Inc.
             </p>
           </div>
         </div>
@@ -62,7 +58,7 @@ export default function Footer() {
           className="mt-8 text-center"
         >
           <p className="font-cinzel text-[10px] tracking-widest uppercase text-ivory/15">
-            "Tous rencontrent Kindred… mais peu choisissent la manière."
+            "All things meet Kindred… but few choose how."
           </p>
           <p className="font-cinzel text-[10px] text-ivory/10 mt-2">
             © 2026 Lore of Legends — Fan Project

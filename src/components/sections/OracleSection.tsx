@@ -6,6 +6,7 @@ import { ORACLE_SUGGESTIONS } from "@/lib/constants";
 import { OracleMessage } from "@/types";
 import RuneCircle from "@/components/animations/RuneCircle";
 import Typewriter from "@/components/animations/Typewriter";
+import KindredLogo from "@/components/ui/KindredLogo";
 
 export default function OracleSection() {
   const [question, setQuestion] = useState("");
@@ -52,7 +53,7 @@ export default function OracleSection() {
 
       const oracleMsg: OracleMessage = {
         role: "oracle",
-        content: data.answer || "L'Oracle n'a pas répondu...",
+        content: data.answer || "The Oracle did not respond...",
         timestamp: new Date(),
       };
 
@@ -62,7 +63,7 @@ export default function OracleSection() {
         ...prev,
         {
           role: "oracle",
-          content: "Les archives sont temporairement inaccessibles. L'obscurité s'épaissit...",
+          content: "The archives are temporarily inaccessible. The darkness deepens...",
           timestamp: new Date(),
         },
       ]);
@@ -115,15 +116,15 @@ export default function OracleSection() {
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/50" />
           </div>
           <h2 className="font-cinzel-decorative text-3xl md:text-5xl font-bold text-ivory">
-            Oracle du{" "}
-            <span className="text-gold-shimmer">Lore de Runeterra</span>
+            Oracle of{" "}
+            <span className="text-gold-shimmer">Runeterra's Lore</span>
           </h2>
           <p className="font-cinzel text-sm text-ivory/40 tracking-wide max-w-xl mx-auto leading-relaxed">
-            Une entité omnisciente sommeillait dans ces archives.
+            An omniscient entity slumbered within these archives.
             <br />
-            Elle connaît chaque secret de Runeterra.
+            It knows every secret of Runeterra.
             <br />
-            Pose ta question.
+            Ask your question.
           </p>
           <div className="rune-divider max-w-sm mx-auto" />
         </motion.div>
@@ -147,7 +148,7 @@ export default function OracleSection() {
                     onClick={handleActivate}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="absolute inset-0 m-auto w-20 h-20 rounded-full border border-gold/40 bg-void flex items-center justify-center group cursor-pointer"
+                    className="absolute inset-0 m-auto w-24 h-24 rounded-full border border-gold/30 bg-void/80 flex items-center justify-center group cursor-pointer"
                     animate={{
                       boxShadow: [
                         "0 0 20px rgba(200,151,42,0.2)",
@@ -157,14 +158,12 @@ export default function OracleSection() {
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <span className="font-cinzel text-2xl text-gold group-hover:scale-110 transition-transform">
-                      ◈
-                    </span>
+                    <KindredLogo variant="oracle-seal" animate />
                   </motion.button>
                 </div>
               </div>
               <p className="font-cinzel text-xs tracking-[0.3em] uppercase text-gold/40 animate-pulse">
-                Touche le sceau pour éveiller l'Oracle
+                Touch the seal to awaken the Oracle
               </p>
             </div>
           ) : (
@@ -305,7 +304,7 @@ export default function OracleSection() {
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Pose ta question à l'Oracle de Runeterra..."
+                    placeholder="Ask your question to the Oracle of Runeterra..."
                     rows={3}
                     maxLength={500}
                     className="w-full bg-transparent px-6 py-4 font-cinzel text-sm text-ivory/70 placeholder-ivory/20 resize-none outline-none leading-relaxed"
@@ -323,7 +322,7 @@ export default function OracleSection() {
                         hover:bg-gold/20 hover:border-gold disabled:opacity-30 disabled:cursor-not-allowed
                         transition-all duration-300 rounded-sm"
                     >
-                      {loading ? "Consultation..." : "Interroger"}
+                      {loading ? "Consulting..." : "Ask the Oracle"}
                     </motion.button>
                   </div>
                 </div>
@@ -335,7 +334,7 @@ export default function OracleSection() {
                       onClick={() => setMessages([])}
                       className="font-cinzel text-[10px] tracking-widest uppercase text-ivory/20 hover:text-ivory/40 transition-colors"
                     >
-                      Effacer les archives
+                      Erase the archives
                     </button>
                   </div>
                 )}

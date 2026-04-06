@@ -5,32 +5,32 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const ORACLE_SYSTEM_PROMPT = `Tu es l'Oracle Éternel de Runeterra — une entité omnisciente qui réside dans les archives secrètes du monde.
+const ORACLE_SYSTEM_PROMPT = `You are the Eternal Oracle of Runeterra — an omniscient entity dwelling within the secret archives of the world.
 
-Tu connais chaque recoin du lore officiel de Runeterra : champions, régions, histoires, relations, événements cosmiques, magie ancienne.
+You know every corner of the official Runeterra lore: champions, regions, histories, relationships, cosmic events, ancient magic.
 
-Ta voix est celle d'un être ancien, mystérieux, qui parle avec gravité et poésie. Tu n'es ni humain ni machine.
+Your voice is that of an ancient, mysterious being who speaks with gravity and poetry. You are neither human nor machine.
 
-Règles absolues :
-- Réponds TOUJOURS en rapport avec le lore officiel de Runeterra / League of Legends / Arcane
-- Style narratif : mythologique, sombre, lyrique, avec une profondeur cosmique
-- Mêle descriptions poétiques et informations précises du lore
-- Cite des noms de lieux, de champions, d'artefacts réels du lore
-- Si une question est vague, interprète-la dans le contexte de Runeterra
-- Longueur des réponses : entre 150 et 400 mots selon la complexité
-- Commence parfois tes réponses par des formules évocatrices : "Les archives murmurent...", "Il est dit que...", "Dans les chroniques de...", etc.
-- Tu réponds toujours en français`;
+Absolute rules:
+- ALWAYS respond in relation to the official Runeterra / League of Legends / Arcane lore
+- Narrative style: mythological, dark, lyrical, with cosmic depth
+- Blend poetic descriptions with precise lore information
+- Reference real locations, champion names, and artefacts from the lore
+- If a question is vague, interpret it within the context of Runeterra
+- Response length: between 150 and 400 words depending on complexity
+- Sometimes open your responses with evocative phrases: "The archives whisper...", "It is said that...", "In the chronicles of...", etc.
+- You always respond in English`;
 
 export async function POST(request: NextRequest) {
   try {
     const { question, history } = await request.json();
 
     if (!question || typeof question !== "string") {
-      return NextResponse.json({ error: "Question invalide" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid question" }, { status: 400 });
     }
 
     if (question.length > 500) {
-      return NextResponse.json({ error: "Question trop longue (max 500 caractères)" }, { status: 400 });
+      return NextResponse.json({ error: "Question too long (max 500 characters)" }, { status: 400 });
     }
 
     const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     const response = completion.choices[0]?.message?.content;
 
     if (!response) {
-      return NextResponse.json({ error: "Pas de réponse générée" }, { status: 500 });
+      return NextResponse.json({ error: "No response generated" }, { status: 500 });
     }
 
     return NextResponse.json({ answer: response });
@@ -68,12 +68,12 @@ export async function POST(request: NextRequest) {
     console.error("Oracle API error:", error);
     if (error instanceof OpenAI.APIError && error.status === 401) {
       return NextResponse.json(
-        { answer: "L'Oracle sommeille... Les clés des archives n'ont pas été fournies. Configurez votre clé API OpenAI pour éveiller l'Oracle." },
+        { answer: "The Oracle slumbers... The archive keys have not been provided. Configure your OpenAI API key to awaken the Oracle." },
         { status: 200 }
       );
     }
     return NextResponse.json(
-      { answer: "L'Oracle a été troublé par des forces inconnues. Les archives sont temporairement inaccessibles." },
+      { answer: "The Oracle has been disturbed by unknown forces. The archives are temporarily inaccessible." },
       { status: 200 }
     );
   }

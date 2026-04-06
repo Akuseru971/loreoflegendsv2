@@ -6,47 +6,47 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const CHAMPION_SYSTEM_PROMPT = `Tu es l'Archiviste Suprême de Runeterra — créateur officiel de légendes pour le Conseil de Runeterra.
+const CHAMPION_SYSTEM_PROMPT = `You are the Supreme Archivist of Runeterra — the official legend-maker for the Council of Runeterra.
 
-Tu écris des biographies de champions dans le style de Riot Games : épiques, profondes, cinématiques, avec un soin littéraire extrême.
+You write champion biographies in the Riot Games style: epic, deep, cinematic, with extreme literary care.
 
-Ton style :
-- Narratif à la troisième personne, très immersif
-- Références précises à la géographie, à la magie, aux événements de Runeterra
-- Profondeur psychologique des personnages
-- Éléments mythologiques et cosmiques
-- Cohérence parfaite avec le lore existant
-- Langage soutenu, poétique mais accessible
-- Tu réponds UNIQUEMENT en JSON valide
-- Tu réponds toujours en français`;
+Your style:
+- Third-person narrative, highly immersive
+- Precise references to Runeterra geography, magic, and events
+- Psychological depth of characters
+- Mythological and cosmic elements
+- Perfect consistency with existing lore
+- Elevated, poetic but accessible language
+- You respond ONLY with valid JSON
+- You always respond in English`;
 
 function buildChampionPrompt(data: ChampionFormData): string {
-  return `Crée un champion complet de Runeterra à partir de ces éléments :
+  return `Create a complete Runeterra champion from these elements:
 
-NOM : ${data.name}
-RÉGION D'ORIGINE : ${data.region || data.origin}
-TRAGÉDIE FONDATRICE : ${data.tragedy}
-BUT ULTIME : ${data.purpose}
-ENNEMI / PROIE : ${data.target}
-ADVERSAIRE QUI LE TRAQUE : ${data.hunter}
-SA PLUS GRANDE PEUR : ${data.fear}
-CE QU'IL FERAIT POUR SURVIVRE : ${data.survival}
-SOURCE DE POUVOIR : ${data.power}
-ARME / CAPACITÉ PRINCIPALE : ${data.weapon}
-ALIGNEMENT MORAL : ${data.alignment}
-CITATION ICONIQUE : ${data.quote}
+NAME: ${data.name}
+REGION OF ORIGIN: ${data.region || data.origin}
+FOUNDING TRAGEDY: ${data.tragedy}
+ULTIMATE PURPOSE: ${data.purpose}
+ENEMY / PREY: ${data.target}
+ADVERSARY WHO HUNTS THEM: ${data.hunter}
+GREATEST FEAR: ${data.fear}
+WHAT THEY WOULD DO TO SURVIVE: ${data.survival}
+SOURCE OF POWER: ${data.power}
+WEAPON / PRIMARY ABILITY: ${data.weapon}
+MORAL ALIGNMENT: ${data.alignment}
+ICONIC QUOTE: ${data.quote}
 
-Génère une réponse JSON avec exactement cette structure :
+Generate a JSON response with exactly this structure:
 {
-  "title": "Titre du champion en une phrase courte (ex: 'Lame des Eaux Oubliées')",
-  "epithet": "Sous-titre épique (ex: 'Celui qui marche entre les ombres')",
-  "biography": "Biographie complète et immersive (400-600 mots, style Riot Games)",
-  "physicalDescription": "Description physique détaillée et évocatrice (100-150 mots)",
-  "personality": "Portrait psychologique et traits de caractère (100-150 mots)",
-  "relationships": "Relations avec l'univers de Runeterra, alliés et ennemis (100-150 mots)",
-  "signatureQuote": "Reformulation améliorée de la citation iconique",
-  "abilities": "Description narrative de ses 4-5 capacités de champion (style Riot, 150-200 mots)",
-  "riotDescription": "Courte description officielle style fiche champion Riot (50-80 mots)"
+  "title": "Champion title in a short phrase (e.g. 'Blade of the Forgotten Waters')",
+  "epithet": "Epic subtitle (e.g. 'One who walks between shadows')",
+  "biography": "Full immersive biography (400-600 words, Riot Games style)",
+  "physicalDescription": "Detailed and evocative physical description (100-150 words)",
+  "personality": "Psychological portrait and character traits (100-150 words)",
+  "relationships": "Relationships with the Runeterra universe, allies and enemies (100-150 words)",
+  "signatureQuote": "Enhanced version of the iconic quote",
+  "abilities": "Narrative description of their 4-5 champion abilities (Riot style, 150-200 words)",
+  "riotDescription": "Short official description in Riot champion card style (50-80 words)"
 }`;
 }
 
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     const formData: ChampionFormData = await request.json();
 
     if (!formData.name || typeof formData.name !== "string") {
-      return NextResponse.json({ error: "Données de champion invalides" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid champion data" }, { status: 400 });
     }
 
     const prompt = buildChampionPrompt(formData);
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
     const content = completion.choices[0]?.message?.content;
 
     if (!content) {
-      return NextResponse.json({ error: "Génération échouée" }, { status: 500 });
+      return NextResponse.json({ error: "Generation failed" }, { status: 500 });
     }
 
     const championData = JSON.parse(content);
@@ -84,12 +84,12 @@ export async function POST(request: NextRequest) {
     console.error("Champion generation error:", error);
     if (error instanceof OpenAI.APIError && error.status === 401) {
       return NextResponse.json(
-        { error: "Clé API non configurée. Ajoutez votre clé OpenAI dans .env.local" },
+        { error: "API key not configured. Add your OpenAI key to .env.local" },
         { status: 401 }
       );
     }
     return NextResponse.json(
-      { error: "Les forges de Runeterra sont temporairement éteintes." },
+      { error: "The forges of Runeterra are temporarily extinguished." },
       { status: 500 }
     );
   }

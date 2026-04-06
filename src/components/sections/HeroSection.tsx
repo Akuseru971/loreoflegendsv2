@@ -64,7 +64,7 @@ export default function HeroSection() {
         >
           <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/60" />
           <span className="font-cinzel text-xs tracking-[0.4em] uppercase text-gold/70">
-            Archive Interdite
+            Forbidden Archive
           </span>
           <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/60" />
         </motion.div>
@@ -103,9 +103,9 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 1.2 }}
             className="font-cinzel text-base md:text-lg text-ivory/60 tracking-wide max-w-2xl mx-auto leading-relaxed"
           >
-            Les archives de Runeterra t'attendent.
+            The archives of Runeterra await you.
             <br />
-            <span className="text-gold/80">Kindred</span> a gravé ton nom dans le livre des destins.
+            <span className="text-gold/80">Kindred</span> has carved your name in the book of fates.
           </motion.p>
         </div>
 
@@ -120,14 +120,14 @@ export default function HeroSection() {
             href="#forge"
             className="group relative font-cinzel text-sm tracking-widest uppercase px-8 py-4 bg-gold/10 border border-gold/50 text-gold hover:bg-gold/20 hover:border-gold transition-all duration-300 rounded-sm overflow-hidden"
           >
-            <span className="relative z-10">Forge ton Champion</span>
+            <span className="relative z-10">Forge your Champion</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
           </a>
           <a
             href="#oracle"
             className="font-cinzel text-sm tracking-widest uppercase px-8 py-4 border border-ivory/20 text-ivory/60 hover:text-ivory hover:border-ivory/40 transition-all duration-300 rounded-sm"
           >
-            Consulter l'Oracle
+            Consult the Oracle
           </a>
         </motion.div>
 
@@ -138,7 +138,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 2 }}
           className="font-cinzel text-xs md:text-sm italic text-gold/40 max-w-lg mx-auto mt-4 leading-relaxed"
         >
-          "Tous rencontrent Kindred… mais peu choisissent la manière."
+          "All things meet Kindred… but few choose how."
         </motion.blockquote>
       </motion.div>
 
@@ -150,7 +150,7 @@ export default function HeroSection() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="font-cinzel text-[10px] tracking-[0.3em] uppercase text-gold/30">
-          Descends
+          Descend
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}

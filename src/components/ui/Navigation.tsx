@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import KindredLogo from "@/components/ui/KindredLogo";
 
 const navLinks = [
-  { label: "L'Archive", href: "#oracle" },
-  { label: "Forge du Destin", href: "#forge" },
+  { label: "The Archive", href: "#oracle" },
+  { label: "Forge of Fate", href: "#forge" },
   { label: "Premium", href: "#premium" },
 ];
 
@@ -39,13 +40,7 @@ export default function Navigation() {
           className="flex items-center gap-3 group"
           whileHover={{ scale: 1.02 }}
         >
-          <div className="relative w-8 h-8">
-            <div className="absolute inset-0 border border-gold/40 rotate-45 rounded-sm group-hover:border-gold/80 transition-colors" />
-            <div className="absolute inset-1 border border-gold/20 rotate-12 rounded-sm" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-gold text-xs font-cinzel font-bold">L</span>
-            </div>
-          </div>
+          <KindredLogo variant="nav" className="group-hover:opacity-100 opacity-80 transition-opacity" />
           <span className="font-cinzel text-sm font-semibold text-ivory/90 tracking-widest uppercase group-hover:text-gold transition-colors">
             Lore of Legends
           </span>
@@ -67,7 +62,7 @@ export default function Navigation() {
             href="#forge"
             className="font-cinzel text-xs tracking-widest uppercase px-4 py-2 border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 rounded-sm"
           >
-            Commence ta Légende
+            Begin your Legend
           </a>
         </div>
 
@@ -118,7 +113,7 @@ export default function Navigation() {
                 className="font-cinzel text-sm tracking-widest uppercase px-4 py-3 border border-gold/40 text-gold text-center hover:bg-gold/10 transition-all rounded-sm mt-2"
                 onClick={() => setMenuOpen(false)}
               >
-                Commence ta Légende
+                Begin your Legend
               </a>
             </div>
           </motion.div>

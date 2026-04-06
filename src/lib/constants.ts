@@ -16,56 +16,56 @@ export const RUNETERRA_REGIONS = [
 ];
 
 export const POWER_TYPES = [
-  "Magie des runes anciens",
-  "Force brutale et physique",
-  "Nécromancie et mort",
-  "Technologie Piltover/Hextech",
-  "Void et entropie",
-  "Lumière divine céleste",
-  "Ombre et assassinat",
-  "Magie élémentaire",
-  "Alchimie et chimscience",
-  "Magie runique targonienne",
+  "Ancient Rune Magic",
+  "Raw Physical Strength",
+  "Necromancy and Death",
+  "Piltover / Hextech Technology",
+  "Void and Entropy",
+  "Divine Celestial Light",
+  "Shadow and Assassination",
+  "Elemental Magic",
+  "Alchemy and Chemtech",
+  "Targonian Runic Magic",
 ];
 
 export const MORAL_ALIGNMENTS = [
-  "Héros — Protecteur des innocents",
-  "Antihéros — Bien par des moyens sombres",
-  "Neutre — Guidé par le devoir ou le destin",
-  "Moralement ambigu — Ni bien ni mal",
-  "Antivillain — Mal pour de bonnes raisons",
-  "Villain — Destruction assumée",
+  "Hero — Protector of the innocent",
+  "Anti-hero — Good through dark means",
+  "Neutral — Driven by duty or fate",
+  "Morally ambiguous — Neither good nor evil",
+  "Anti-villain — Evil for righteous reasons",
+  "Villain — Embracing destruction",
 ];
 
 export const ORACLE_SUGGESTIONS = [
-  "Qui est le champion le plus ancien de Runeterra ?",
-  "Quelle région possède la magie la plus dangereuse ?",
-  "Quelle est l'histoire complète de Kindred ?",
-  "Qui pourrait véritablement vaincre Aurelion Sol ?",
-  "Quel est le lien entre le Void et la Démise ?",
-  "Quelle est la véritable nature de l'Œil de Heraut ?",
-  "Pourquoi Viego a-t-il corrompu les Shadow Isles ?",
-  "Quel est le secret de la Cité de l'Éternel Soleil ?",
+  "Who is the oldest champion in Runeterra?",
+  "Which region holds the most dangerous magic?",
+  "What is the full story of Kindred?",
+  "Who could truly defeat Aurelion Sol?",
+  "What is the connection between the Void and the Ruination?",
+  "What is the true nature of the Eye of the Herald?",
+  "Why did Viego corrupt the Shadow Isles?",
+  "What secrets lie within the Eternal Sun City?",
 ];
 
 export const KINDRED_LAMB_QUESTIONS = [
-  { id: "name", text: "Quel est ton nom, voyageur ?", speaker: "lamb", description: "Le nom que ton champion portera dans les chroniques de Runeterra." },
-  { id: "origin", text: "De quelle terre es-tu né ?", speaker: "lamb", description: "La région de Runeterra qui t'a façonné." },
-  { id: "tragedy", text: "Quelle tragédie t'a brisé... puis reconstruit ?", speaker: "lamb", description: "L'événement fondateur qui définit qui tu es devenu." },
-  { id: "purpose", text: "Quel est ton but ultime dans ce monde ?", speaker: "lamb", description: "La quête qui guide chacun de tes pas." },
+  { id: "name", text: "What is your name, wanderer?", speaker: "lamb", description: "The name your champion will carry through the chronicles of Runeterra." },
+  { id: "origin", text: "From what land were you born?", speaker: "lamb", description: "The region of Runeterra that shaped who you are." },
+  { id: "tragedy", text: "What tragedy broke you… then rebuilt you?", speaker: "lamb", description: "The defining event that made you who you have become." },
+  { id: "purpose", text: "What is your ultimate purpose in this world?", speaker: "lamb", description: "The quest that guides your every step." },
 ];
 
 export const KINDRED_WOLF_QUESTIONS = [
-  { id: "target", text: "Qui est ta proie ? Qui pourchasses-tu ?", speaker: "wolf", description: "Ton ennemi juré, la raison de ta chasse." },
-  { id: "hunter", text: "Qui te traque dans l'ombre ?", speaker: "wolf", description: "Celui ou ce qui te suit, cherchant ta fin." },
-  { id: "fear", text: "Que crains-tu le plus dans l'obscurité ?", speaker: "wolf", description: "Ta faiblesse secrète, ce qui te paralise." },
-  { id: "survival", text: "Que ferais-tu pour survivre ?", speaker: "wolf", description: "Ta limite morale, la ligne que tu pourrais franchir." },
+  { id: "target", text: "Who is your prey? Who do you hunt?", speaker: "wolf", description: "Your sworn enemy, the reason for your hunt." },
+  { id: "hunter", text: "Who stalks you from the shadows?", speaker: "wolf", description: "The one or thing that follows you, seeking your end." },
+  { id: "fear", text: "What do you dread most in the darkness?", speaker: "wolf", description: "Your secret weakness, the thing that paralyses you." },
+  { id: "survival", text: "What would you do to survive?", speaker: "wolf", description: "Your moral limit, the line you might be willing to cross." },
 ];
 
 export const EXTRA_QUESTIONS = [
-  { id: "region", text: "Dans quelle région as-tu forgé ta légende ?", type: "select", options: RUNETERRA_REGIONS },
-  { id: "power", text: "Quelle est la source de ton pouvoir ?", type: "select", options: POWER_TYPES },
-  { id: "weapon", text: "Quelle est ton arme ou capacité principale ?", type: "text", placeholder: "Ex: Lame de foudre ancienne, sorts de glace prophétique..." },
-  { id: "alignment", text: "Où te situes-tu dans la dualité du monde ?", type: "select", options: MORAL_ALIGNMENTS },
-  { id: "quote", text: "Quelle est ta citation iconique ?", type: "text", placeholder: "La phrase qui te définit en une seule ligne..." },
+  { id: "region", text: "In which region did you forge your legend?", type: "select", options: RUNETERRA_REGIONS },
+  { id: "power", text: "What is the source of your power?", type: "select", options: POWER_TYPES },
+  { id: "weapon", text: "What is your weapon or primary ability?", type: "text", placeholder: "e.g. Ancient lightning blade, prophetic ice magic..." },
+  { id: "alignment", text: "Where do you stand in the duality of the world?", type: "select", options: MORAL_ALIGNMENTS },
+  { id: "quote", text: "What is your iconic quote?", type: "text", placeholder: "The phrase that defines you in a single line..." },
 ];

@@ -32,24 +32,24 @@ export default function ForgeSectionWrapper() {
             </div>
 
             <h2 className="font-cinzel-decorative text-3xl md:text-5xl font-bold text-ivory">
-              Forge ton Lore{" "}
-              <span className="text-gold-shimmer">avec Kindred</span>
+              Forge your Lore{" "}
+              <span className="text-gold-shimmer">with Kindred</span>
             </h2>
 
             <p className="font-cinzel text-sm text-ivory/40 max-w-xl mx-auto leading-relaxed tracking-wide">
-              Lamb et Wolf te poseront des questions pour forger ton champion.
+              Lamb and Wolf will ask you questions to forge your champion.
               <br />
-              Une IA génèrera ton lore complet, ton titre et ton illustration.
+              An AI will generate your full lore, your title and your illustration.
             </p>
 
             <div className="rune-divider max-w-sm mx-auto" />
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mt-8">
               {[
-                { step: "01", label: "Invocation", desc: "Le rituel commence" },
-                { step: "02", label: "Questionnaire", desc: "Lamb & Wolf t'interrogent" },
-                { step: "03", label: "Génération", desc: "L'IA forge ton lore" },
-                { step: "04", label: "Révélation", desc: "Ton champion naît" },
+                { step: "01", label: "Invocation", desc: "The ritual begins" },
+                { step: "02", label: "Questionnaire", desc: "Lamb & Wolf question you" },
+                { step: "03", label: "Generation", desc: "AI forges your lore" },
+                { step: "04", label: "Revelation", desc: "Your champion is born" },
               ].map((item) => (
                 <motion.div
                   key={item.step}
@@ -73,7 +73,7 @@ export default function ForgeSectionWrapper() {
               className="group relative font-cinzel text-sm tracking-widest uppercase px-10 py-5 overflow-hidden
                 border border-gold/50 text-gold hover:text-void transition-all duration-500 rounded-sm mt-4"
             >
-              <span className="relative z-10">✦ Entrer dans la Forge ✦</span>
+              <span className="relative z-10">❖ Enter the Forge ❖</span>
               <div className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
             </motion.button>
           </div>

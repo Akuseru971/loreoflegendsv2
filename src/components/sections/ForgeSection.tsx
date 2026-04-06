@@ -11,6 +11,7 @@ import {
 import KindredAvatar from "@/components/ui/KindredAvatar";
 import RuneCircle from "@/components/animations/RuneCircle";
 import Typewriter from "@/components/animations/Typewriter";
+import KindredLogo from "@/components/ui/KindredLogo";
 
 const EMPTY_FORM: ChampionFormData = {
   name: "", origin: "", tragedy: "", purpose: "",
@@ -136,13 +137,13 @@ export default function ForgeSection() {
         });
         if (!res.ok) {
           const data = await res.json();
-          throw new Error(data.error || "Génération échouée");
+          throw new Error(data.error || "Generation failed");
         }
         const data: GeneratedChampion = await res.json();
         setChampion(data);
         setStep("result");
       } catch (err: unknown) {
-        setError(err instanceof Error ? err.message : "Erreur inconnue");
+        setError(err instanceof Error ? err.message : "Unknown error");
         setStep("result");
       }
     };
@@ -238,9 +239,9 @@ function InvocationStep({ onStart }: { onStart: () => void }) {
             transition={{ delay: 1 }}
             className="flex items-center justify-center gap-3"
           >
-            <div className="h-px w-8 bg-gold/40" />
+            <span className="h-px w-8 bg-gold/40" />
             <span className="font-cinzel text-[10px] tracking-[0.5em] uppercase text-gold/50">
-              Rituel d'Invocation
+              Invocation Ritual
             </span>
             <div className="h-px w-8 bg-gold/40" />
           </motion.div>
@@ -251,10 +252,10 @@ function InvocationStep({ onStart }: { onStart: () => void }) {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="font-cinzel-decorative text-3xl md:text-4xl font-bold text-ivory leading-tight"
           >
-            Forge ton{" "}
-            <span className="text-gold-shimmer">Destin</span>
+            Forge your{" "}
+            <span className="text-gold-shimmer">Destiny</span>
             <br />
-            avec Kindred
+            with Kindred
           </motion.h2>
 
           <motion.div
@@ -264,7 +265,7 @@ function InvocationStep({ onStart }: { onStart: () => void }) {
             className="h-16"
           >
             <Typewriter
-              text="Tous rencontrent Kindred… mais peu choisissent la manière. Lamb et Wolf t'attendaient. Ils connaissent ton histoire — mais veulent l'entendre de ta bouche. Es-tu prêt à forger ta légende ?"
+              text="All things meet Kindred\u2026 but few choose how. Lamb and Wolf have been waiting for you. They know your story — but want to hear it from your own lips. Are you ready to forge your legend?"
               speed={22}
               delay={1500}
               onComplete={() => setIntroTyped(true)}
@@ -294,7 +295,7 @@ function InvocationStep({ onStart }: { onStart: () => void }) {
                 border border-gold/50 text-gold hover:text-void transition-all duration-500 rounded-sm"
               transition={{ boxShadow: { duration: 2, repeat: Infinity } }}
             >
-              <span className="relative z-10">Commencer le Rituel</span>
+              <span className="relative z-10">Begin the Ritual</span>
               <div className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
             </motion.button>
           )}
@@ -307,9 +308,9 @@ function InvocationStep({ onStart }: { onStart: () => void }) {
           className="flex items-center gap-8 text-center"
         >
           {[
-            { icon: "◈", label: "Guidé par Kindred" },
-            { icon: "✦", label: "Lore généré par IA" },
-            { icon: "⬡", label: "Illustration exclusive" },
+          { icon: "◈", label: "Guided by Kindred" },
+            { icon: "❖", label: "AI-generated Lore" },
+            { icon: "⬡", label: "Exclusive Illustration" },
           ].map((item) => (
             <div key={item.label} className="flex flex-col items-center gap-2">
               <span className="text-gold/40 text-lg">{item.icon}</span>
@@ -380,7 +381,7 @@ function QuestionStep({
           <KindredAvatar size="md" speaker={speaker} />
           <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border ${borderClass} ${bgClass}`}>
             <span className={`font-cinzel text-[10px] tracking-widest uppercase ${textClass}`}>
-              {isLamb ? "Lamb parle" : "Wolf grogne"}
+              {isLamb ? "Lamb speaks" : "Wolf growls"}
             </span>
           </div>
         </div>
@@ -419,7 +420,7 @@ function QuestionStep({
               className={`font-cinzel text-xs tracking-widest uppercase px-6 py-2 border ${borderClass} ${textClass}
                 hover:${bgClass} disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 rounded-sm`}
             >
-              {isLast ? "Continuer →" : "Suivant →"}
+              {isLast ? "Continue →" : "Next →"}
             </motion.button>
           </div>
         </div>
@@ -475,10 +476,8 @@ function ExtraQuestionStep({
 
       <div className="relative z-10 max-w-2xl w-full space-y-8">
         <div className="flex flex-col items-center gap-6">
-          <div className="w-16 h-16 rounded-full border border-mystic/40 bg-mystic/5 flex items-center justify-center">
-            <span className="text-mystic text-2xl">⬡</span>
-          </div>
-          <span className="font-cinzel text-[10px] tracking-widest uppercase text-mystic/60">Destins &amp; Pouvoir</span>
+          <KindredLogo variant="fate-icon" className="w-16 h-16" animate />
+          <span className="font-cinzel text-[10px] tracking-widest uppercase text-mystic/60">Fates &amp; Power</span>
         </div>
 
         <div className="text-center space-y-2">
@@ -517,7 +516,7 @@ function ExtraQuestionStep({
                   onNext();
                 }
               }}
-              placeholder={question.placeholder || "Écris ta réponse..."}
+              placeholder={question.placeholder || "Write your answer..."}
               rows={3}
               maxLength={300}
               className="w-full bg-transparent px-6 py-4 font-cinzel text-sm text-ivory/80 placeholder-ivory/20 resize-none outline-none"
@@ -533,7 +532,7 @@ function ExtraQuestionStep({
           className="w-full font-cinzel text-sm tracking-widest uppercase py-4 border border-mystic/40 text-mystic
             hover:bg-mystic/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 rounded-sm"
         >
-          {isLast ? "✦ Forger ma Légende ✦" : "Suivant →"}
+          {isLast ? "❖ Forge my Legend ❖" : "Next →"}
         </motion.button>
       </div>
     </motion.div>
@@ -544,11 +543,11 @@ function ExtraQuestionStep({
 
 function GeneratingStep() {
   const steps = [
-    "Lamb tisses les fils du destin...",
-    "Wolf creuse dans les instincts primitifs...",
-    "Les archives s'ouvrent pour toi...",
-    "Le lore prend forme dans les chroniques...",
-    "Ton champion émerge de l'obscurité...",
+    "Lamb weaves the threads of fate...",
+    "Wolf digs into primal instincts...",
+    "The archives open themselves for you...",
+    "The lore takes shape in the chronicles...",
+    "Your champion emerges from the darkness...",
   ];
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -582,7 +581,7 @@ function GeneratingStep() {
         </motion.div>
 
         <div className="text-center space-y-4 max-w-sm">
-          <h3 className="font-cinzel text-xl text-gold">Forge en cours...</h3>
+          <h3 className="font-cinzel text-xl text-gold">Forging...</h3>
           <AnimatePresence mode="wait">
             <motion.p
               key={currentStep}
@@ -635,17 +634,17 @@ function ResultStep({
       <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-6">
         <div className="text-center space-y-4 max-w-lg">
           <span className="text-5xl">⚠</span>
-          <h3 className="font-cinzel text-xl text-gold">Les forges sont éteintes</h3>
-          <p className="font-serif text-sm text-ivory/50 italic">{error || "Une erreur s'est produite."}</p>
+          <h3 className="font-cinzel text-xl text-gold">The forges are extinguished</h3>
+          <p className="font-serif text-sm text-ivory/50 italic">{error || "An error occurred."}</p>
           <p className="font-cinzel text-xs text-ivory/30">
-            Assurez-vous que votre clé API OpenAI est configurée dans le fichier .env.local
+            Make sure your OpenAI API key is configured in the .env.local file
           </p>
         </div>
         <button
           onClick={onRestart}
           className="font-cinzel text-xs tracking-widest uppercase px-6 py-3 border border-gold/40 text-gold hover:bg-gold/10 transition-all rounded-sm"
         >
-          Recommencer
+          Restart
         </button>
       </div>
     );
@@ -671,7 +670,7 @@ function ResultStep({
           <div className="flex items-center justify-center gap-3">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold/50" />
             <span className="font-cinzel text-[10px] tracking-[0.5em] uppercase text-gold/50">
-              Champion Forgé
+              Champion Forged
             </span>
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold/50" />
           </div>
@@ -687,7 +686,7 @@ function ResultStep({
           </blockquote>
         </motion.div>
 
-        {/* Premium image tease */}
+          {/* Premium image tease — Kindred floating portrait */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -695,31 +694,23 @@ function ResultStep({
           className="relative w-full max-w-sm mx-auto aspect-[3/4] rounded-sm overflow-hidden border border-gold/20 cursor-pointer group"
           onClick={onPremium}
         >
-          {/* Placeholder image avec effets */}
-          <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-slate to-void" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative w-48 h-48">
-              <RuneCircle size={192} speed={25} opacity={0.3} color="#c8972a" />
-              <div className="absolute inset-0 m-auto w-24 h-24 flex items-center justify-center">
-                <span className="text-6xl text-gold/30 font-cinzel-decorative">?</span>
-              </div>
-            </div>
-          </div>
+          {/* Kindred portrait illustration */}
+          <KindredLogo variant="champion-tease" />
           {/* Blur overlay */}
-          <div className="absolute inset-0 backdrop-blur-sm bg-void/40" />
+          <div className="absolute inset-0 backdrop-blur-sm bg-void/30" />
           {/* Premium overlay */}
           <div className="absolute inset-0 premium-overlay" />
-          {/* Lock */}
+          {/* Lock label */}
           <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 gap-3">
             <span className="text-2xl">🔒</span>
             <span className="font-cinzel text-xs tracking-widest uppercase text-gold/80">
-              Illustration Premium
+              Premium Illustration
             </span>
             <span className="font-cinzel text-[10px] text-ivory/40">
-              Clique pour débloquer
+              Click to unlock
             </span>
           </div>
-          {/* Hover effect */}
+          {/* Hover border */}
           <motion.div
             className="absolute inset-0 border-2 border-gold/0 group-hover:border-gold/30 transition-all duration-500"
           />
@@ -730,24 +721,24 @@ function ResultStep({
 
         {/* Lore content */}
         <div className="grid md:grid-cols-2 gap-6">
-          <LoreCard title="Biographie" icon="📜" delay={0.4}>
+          <LoreCard title="Biography" icon="📜" delay={0.4}>
             <p className="font-serif text-sm text-ivory/70 leading-relaxed italic">{champion.biography}</p>
           </LoreCard>
 
           <div className="space-y-6">
-            <LoreCard title="Description Physique" icon="👁" delay={0.5}>
+            <LoreCard title="Physical Description" icon="👁" delay={0.5}>
               <p className="font-serif text-sm text-ivory/70 leading-relaxed">{champion.physicalDescription}</p>
             </LoreCard>
-            <LoreCard title="Personnalité" icon="⚡" delay={0.6}>
+            <LoreCard title="Personality" icon="⚡" delay={0.6}>
               <p className="font-serif text-sm text-ivory/70 leading-relaxed">{champion.personality}</p>
             </LoreCard>
           </div>
 
-          <LoreCard title="Relations avec Runeterra" icon="🌍" delay={0.7}>
+          <LoreCard title="Relationships with Runeterra" icon="🌍" delay={0.7}>
             <p className="font-serif text-sm text-ivory/70 leading-relaxed">{champion.relationships}</p>
           </LoreCard>
 
-          <LoreCard title="Capacités" icon="✨" delay={0.8}>
+          <LoreCard title="Abilities" icon="✨" delay={0.8}>
             <p className="font-serif text-sm text-ivory/70 leading-relaxed">{champion.abilities}</p>
           </LoreCard>
         </div>
@@ -760,7 +751,7 @@ function ResultStep({
           className="p-6 border border-gold/20 bg-gradient-to-b from-gold/5 to-transparent rounded-sm text-center"
         >
           <p className="font-cinzel text-[10px] tracking-[0.4em] uppercase text-gold/40 mb-3">
-            Fiche Officielle Style Riot
+            Official Riot-Style Card
           </p>
           <p className="font-serif text-sm text-ivory/80 italic leading-relaxed max-w-2xl mx-auto">
             {champion.riotDescription}
@@ -779,7 +770,7 @@ function ResultStep({
             className="group relative font-cinzel text-sm tracking-widest uppercase px-8 py-4 overflow-hidden
               border border-gold/50 text-gold hover:text-void transition-all duration-500 rounded-sm"
           >
-            <span className="relative z-10">✦ Découvrir la version Premium ✦</span>
+            <span className="relative z-10">❖ Discover the Premium version ❖</span>
             <div className="absolute inset-0 bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
           </button>
           <button
@@ -787,7 +778,7 @@ function ResultStep({
             className="font-cinzel text-xs tracking-widest uppercase px-6 py-3 border border-ivory/20 text-ivory/40
               hover:text-ivory hover:border-ivory/40 transition-all rounded-sm"
           >
-            Forger un autre champion
+            Forge another champion
           </button>
         </motion.div>
       </div>
@@ -881,18 +872,18 @@ function PremiumStep({
           <div className="space-y-3">
             <div className="flex items-center justify-center gap-3">
               <div className="h-px w-12 bg-gold/40" />
-              <span className="font-cinzel text-[10px] tracking-[0.5em] uppercase text-gold/50">Archive Premium</span>
+              <span className="font-cinzel text-[10px] tracking-[0.5em] uppercase text-gold/50">Premium Archive</span>
               <div className="h-px w-12 bg-gold/40" />
             </div>
             <h2 className="font-cinzel-decorative text-4xl md:text-5xl font-black text-ivory">
-              Découvre comment{" "}
-              <span className="text-gold-shimmer">ton histoire</span>
+              Discover how{" "}
+              <span className="text-gold-shimmer">your story</span>
               <br />
-              se termine.
+              ends.
             </h2>
             <p className="font-serif text-base text-ivory/50 italic max-w-2xl mx-auto leading-relaxed">
-              "Kindred t'a vu naître. Ils veulent te voir briller dans toute ta splendeur.
-              Désigne ton destin et laisse le monde de Runeterra se souvenir de toi."
+              "Kindred watched you be born. They want to see you shine in your full splendour.
+              Seal your fate and let the world of Runeterra remember you."
             </p>
           </div>
           <div className="rune-divider max-w-sm mx-auto" />
@@ -906,7 +897,7 @@ function PremiumStep({
             className="inline-block px-6 py-3 border border-gold/40 bg-gold/5 rounded-sm"
           >
             <span className="font-cinzel text-sm text-gold">
-              Champion : {champion.title}
+              Champion: {champion.title}
             </span>
           </motion.div>
         )}
@@ -927,7 +918,7 @@ function PremiumStep({
             >
               {pack.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gold text-void font-cinzel text-[10px] tracking-widest uppercase rounded-sm">
-                  Recommandé
+                  Recommended
                 </div>
               )}
               <div className="space-y-6">
@@ -968,7 +959,7 @@ function PremiumStep({
           onClick={onRestart}
           className="font-cinzel text-xs tracking-widest uppercase text-ivory/20 hover:text-ivory/40 transition-colors"
         >
-          Retourner aux archives
+          Back to the archives
         </motion.button>
       </div>
     </motion.div>

@@ -27,13 +27,13 @@ export default function HomePage() {
       <HeroSection />
 
       {/* Divider */}
-      <SectionDivider label="Archives de Runeterra" />
+      <SectionDivider label="Archives of Runeterra" />
 
       {/* 2. Oracle */}
       <OracleSection />
 
       {/* Divider */}
-      <SectionDivider label="Forge du Destin" />
+      <SectionDivider label="Forge of Fate" />
 
       {/* 3. Forge */}
       <ForgeSectionWrapper />
